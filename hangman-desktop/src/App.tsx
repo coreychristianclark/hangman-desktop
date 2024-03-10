@@ -6,10 +6,13 @@ import { HangmanDrawing } from "./HangmanDrawing";
 import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
 
-function App() {
-  const [wordToGuess, setWordToGuess] = useState(() => {
+function getWord() {
     return words[Math.floor(Math.random() * words.length)]; // This is giving us a value between 0 and 1, multiplying it by the length of our word list (so, 0 and the length of our list), and then rounding the value down. This is how our words will be generated.
-  });
+
+}
+
+function App() {
+  const [wordToGuess, setWordToGuess] = useState(getWord);
 
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]); // Type set to string array.
   const incorrectLetters = guessedLetters.filter(
@@ -47,6 +50,23 @@ function App() {
       document.removeEventListener("keypress", handler);
     };
   }, [guessedLetters]);
+
+   useEffect(() => {
+     const handler = (e: KeyboardEvent) => {
+       const key = e.key;
+       if (key !== "Enter") return; // Allows the game to refresh upon hitting 'enter'.
+
+       e.preventDefault()
+       setGuessedLetters([]) // Resets the word previously played.
+       setWordToGuess(getWord()) // Generates a new word to guess.
+     };
+
+     document.addEventListener("keypress", handler);
+
+     return () => {
+       document.removeEventListener("keypress", handler);
+     };
+   }, []);
 
   return (
     <div
