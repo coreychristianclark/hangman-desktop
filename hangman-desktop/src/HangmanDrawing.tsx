@@ -85,16 +85,25 @@ const LEFT_LEG = (
   />
 );
 
-export function HangmanDrawing() {
+const BODY_PARTS = [
+  // It's very important that these are in order with how they show up on the screen.
+  HEAD,
+  BODY,
+  RIGHT_ARM,
+  LEFT_ARM,
+  RIGHT_LEG,
+  LEFT_LEG,
+];
+
+type HangmanDrawingProps = {
+  numberOfGuesses: number;
+};
+
+export function HangmanDrawing({ numberOfGuesses }: HangmanDrawingProps) {
   return (
     <div style={{ position: "relative" }}>
-      {HEAD}
-      {BODY}
-      {RIGHT_ARM}
-      {LEFT_ARM}
-      {RIGHT_LEG}
-      {LEFT_LEG}
-
+      {BODY_PARTS.slice(0, numberOfGuesses)}{" "}
+      {/* This will start at index 0, and will continue on until we've reached the max number of guesses. */}
       <div
         style={{
           position: "absolute",
@@ -105,7 +114,6 @@ export function HangmanDrawing() {
           right: "0",
         }}
       />
-
       <div
         style={{
           height: "10px",
@@ -114,7 +122,6 @@ export function HangmanDrawing() {
           marginLeft: "120px",
         }}
       />
-
       <div
         style={{
           height: "400px",
@@ -123,7 +130,6 @@ export function HangmanDrawing() {
           marginLeft: "120px",
         }}
       />
-
       <div style={{ height: "10px", width: "250px", background: "black" }} />
     </div>
   );

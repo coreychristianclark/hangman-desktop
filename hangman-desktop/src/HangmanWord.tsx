@@ -1,6 +1,10 @@
-export function HangmanWord() {
-  const word = "text";
-  const guessedLetters = ["t","e", "g"];
+type HangmanWordProps = {
+    guessedLetters: string[],
+    wordToGuess: string;
+}
+
+export function HangmanWord({guessedLetters, wordToGuess}: HangmanWordProps) {
+
   return (
     <div
       style={{
@@ -12,7 +16,7 @@ export function HangmanWord() {
         fontFamily: "monospace",
       }}
     >
-      {word.split("").map(
+      {wordToGuess.split("").map(
         (
           letter,
           index // This will split the word into each letter and give us the index of each letter so we can work with the characters individually.
