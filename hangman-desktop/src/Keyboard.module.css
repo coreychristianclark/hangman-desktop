@@ -1,0 +1,28 @@
+/* Always remember to apply the class to the element in the desired sheet in order to see the changes that are being made. */
+
+.btn {
+  width: 100%;
+  border: 3px solid black;
+  background: none;
+  aspect-ratio: 1 / 1; /* Makes our buttons square. */
+  font-size: 2.5rem;
+  text-transform: uppercase; /* A very cool way to make sure they're uppercase letters -- you don't need JavaScript specifically for this. */
+  padding: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+}
+
+.btn.active {
+background-color: hsl(200, 100%, 50%);
+color: white;
+}
+
+.btn.inactive {
+opacity: 0.3;
+}
+
+.btn:hover:not(:disabled),
+.btn:focus:not(:disabled) {
+background-color: hsl(200,100%,75%);
+}
