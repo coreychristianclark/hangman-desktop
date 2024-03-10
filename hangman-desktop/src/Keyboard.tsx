@@ -37,7 +37,7 @@ type KeyboardProps = {
 };
 
 export function Keyboard({
-disabled = false,
+  disabled = false,
   activeLetters,
   inactiveLetters,
   addGuessedLetter,

@@ -1,6 +1,11 @@
 /* Always remember to apply the class to the element in the desired sheet in order to see the changes that are being made. */
 
 .btn {
+  /* display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-content: center; */
   width: 100%;
   border: 3px solid black;
   background: none;
@@ -14,8 +19,8 @@
 }
 
 .btn.active {
-background-color: hsl(200, 100%, 50%);
-color: white;
+background-color: hsl(114, 100%, 51%);
+color: black;
 }
 
 .btn.inactive {

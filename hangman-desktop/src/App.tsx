@@ -79,15 +79,17 @@ function App() {
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: "2rem", textAlign: "center" }}></div>
-
-      {isWinner && "You win! Refresh to try a new word."}
-      {isLoser && "Nice try! Refresh to try a new word."}
+      <div style={{ fontSize: "3rem", textAlign: "center", fontWeight: "bold"}}>
+        {isWinner && "You win! Refresh to try a new word."}
+        {isLoser && "Nice try! Refresh to try a new word."}
+      </div>
 
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord
         reveal={isLoser} // Reveals the word if user loses.
-        guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
+        guessedLetters={guessedLetters}
+        wordToGuess={wordToGuess}
+      />
       <div style={{ alignSelf: "stretch" }}>
         <Keyboard
           disabled={isWinner || isLoser}
